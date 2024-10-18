@@ -1,31 +1,27 @@
-import { useState } from 'react';
-import { Edgerunners_backend } from 'declarations/Edgerunners_backend';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import IncidentForm from './components/IncidentForm';
+import IncidentList from './components/IncidentList';
+import { Card } from 'react-bootstrap';
 
-function App() {
-  const [greeting, setGreeting] = useState('');
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    Edgerunners_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
 
+const App = () => {
   return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
+    <Router>
+      <div>
+        <Card className='text-center'>
+          <Card.Body>
+            <Card.Title>Patrullaje Inteligente</Card.Title>
+        </Card.Body>
+        </Card>
+        <Routes>
+          <Route path="/" element={<IncidentList />} />
+          <Route path="/report" element={<IncidentForm />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;

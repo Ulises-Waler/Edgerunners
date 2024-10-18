@@ -15,5 +15,8 @@
   "workspaces": [
     "src/Edgerunners_backend",
     "src/Edgerunners_frontend"
-  ]
+  ],
+  "devDependencies": {
+    "@types/express": "^5.0.0"
+  }
 }
